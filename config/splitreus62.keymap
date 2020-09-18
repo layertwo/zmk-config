@@ -44,7 +44,7 @@
 &trans  &none      &none     &none     &none     &none                        &none    &none      &none    &none     &none     &none
 &trans  &none      &none     &none     &trans    &none                        &none    &kp LARW   &kp DARW &kp UARW  &kp RARW  &none
 &trans  &none      &none     &none     &none     &none                        &none    &none      &none    &none     &none     &none
-&trans  &BT_PROF_PREV &BT_PROF_NEXT &BT_PROF_SEL 0 &none      &trans                       &kp END  &none     &none    &none     &none     &bt BT_CLEAR_BONDS
+&trans  &BT_PRV_CMD  &BT_NXT_CMD  &BT_SEL_CMD 0 &none      &trans                       &kp END  &none     &none    &none     &none     &bt BT_CLR
                                                  &trans                     &kp HOME
             >;
         };
