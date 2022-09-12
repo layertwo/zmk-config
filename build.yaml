@@ -14,6 +14,6 @@
 ---
 include:
   - board: nice_nano
-    shield:
-      - splitreus62_left
-      - splitreus62_right
+    shield: splitreus62_left
+  - board: nice_nano
+    shield: splitreus62_right
