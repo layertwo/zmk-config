@@ -1,8 +1,8 @@
-# Copyright (c) 2022 Derek Schmell
+# Copyright (c) 2022 Derek Schmell, Lucas Messenger
 # SPDX-License-Identifier: MIT
 
-config SHIELD_SPLITREUS62_LEFT
+config SHIELD_SANIC62_LEFT
 	def_bool $(shields_list_contains,sanic62_left)
 
-config SHIELD_SPLITREUS62_RIGHT
+config SHIELD_SANIC62_RIGHT
 	def_bool $(shields_list_contains,sanic62_right)
