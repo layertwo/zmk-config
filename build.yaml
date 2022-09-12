@@ -13,5 +13,7 @@
 #
 ---
 include:
-  - board: splitreus62_left
-  - board: splitreus62_right
+  - board: nice_nano
+    shield:
+      - splitreus62_left
+      - splitreus62_right
