@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: MIT
  */
- 
+
 #include "sanic62.dtsi"
 
 &default_transform {
@@ -20,4 +20,4 @@
 		, <&pro_micro  5 GPIO_ACTIVE_HIGH>
 		, <&pro_micro  0 GPIO_ACTIVE_HIGH>
 		;
-}
+};
