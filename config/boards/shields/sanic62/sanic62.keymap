@@ -21,8 +21,12 @@
         mac_lock: mac_lock{
             label = "macro_mac_lock";
             compatible = "zmk,behavior-macro";
+            wait-ms = <0>;
             #binding-cells = <0>;
-            bindings = <&macro_tap &kp LCTL &kp LGUI &kp Q>;
+            bindings = <&macro_press &kp LCTL &kp LGUI &kp Q>
+                     , <&macro_pause_for_release>
+                     , <&macro_release &kp LCTL &kp LGUI &kp Q>
+                     ;
         };
     };
 
