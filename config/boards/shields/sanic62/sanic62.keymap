@@ -14,15 +14,25 @@
         mac_ent: mac_ent{
             label = "macro_enter_tog";
             compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
             bindings = <&macro_tap &kp RET>, <&macro_tap &tog 1>;
         };
 
         mac_lock: mac_lock{
             label = "macro_mac_lock";
             compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
             bindings = <&macro_tap &kp LCTL &kp LGUI &kp Q>;
         };
     };
+
+    td0: tap_dance_0 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_0";
+            tapping-term-ms = <200>;
+            #binding-cells = <0>;
+            bindings = <&kp RCTRL>, <&mac_lock>;
+        };
 
     keymap {
         compatible = "zmk,keymap";
@@ -33,7 +43,7 @@
 &kp TAB     &kp Q      &kp W        &kp E      &kp R      &kp T                         &kp Y     &kp U      &kp I      &kp O      &kp P      &kp BSLH
 &tog 1      &kp A      &kp S        &kp D      &kp F      &kp G                         &kp H     &kp J      &kp K      &kp L      &kp SCLN   &kp QUOT
 &kp LSHFT   &kp Z      &kp X        &kp C      &kp V      &kp B                         &kp N     &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RSHFT
-&kp LCTRL   &none      &none        &kp LALT   &kp LGUI   &kp SPC &kp DEL     &kp BKSP  &kp RET   &kp MINUS  &kp EQL    &kp LBKT   &kp RBKT   &mac_lock
+&kp LCTRL   &none      &none        &kp LALT   &kp LGUI   &kp SPC &kp DEL     &kp BKSP  &kp RET   &kp MINUS  &kp EQL    &kp LBKT   &kp RBKT   &td0
                         >;
                 };
     nav_layer {
