@@ -1,0 +1,11 @@
+file_format: "1"
+id: sanic62
+name: sanic62
+type: shield
+url: https://nacly.net
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - sanic62_left
+  - sanic62_right

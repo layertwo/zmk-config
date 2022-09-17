@@ -1,0 +1,20 @@
+# Copyright (c) 2022 Derek Schmell, Lucas Messenger
+# SPDX-License-Identifier: MIT
+
+
+if SHIELD_SANIC62_LEFT
+
+config ZMK_KEYBOARD_NAME
+	default "sanic62"
+
+config ZMK_SPLIT_BLE_ROLE_CENTRAL
+	default y
+
+endif
+
+if SHIELD_SANIC62_LEFT || SHIELD_SANIC62_RIGHT
+
+config ZMK_SPLIT
+	default y
+
+endif
