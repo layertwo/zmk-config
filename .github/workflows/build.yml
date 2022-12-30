@@ -4,6 +4,4 @@ jobs:
   build:
     runs-on: ubuntu-latest
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
-    steps:
-    - name: Release
-      uses: softprops/action-gh-release@v1
+    uses: softprops/action-gh-release@v1
