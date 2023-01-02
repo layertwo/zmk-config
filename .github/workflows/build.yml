@@ -1,6 +1,8 @@
 #on: [push, pull_request, workflow_dispatch]
 
 on:
+  push:
+  pull_request:
   workflow_call:
     inputs:
       build_matrix_path:
