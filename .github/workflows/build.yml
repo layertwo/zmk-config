@@ -1,9 +1,9 @@
-#on: [push, pull_request, workflow_dispatch]
-
 on:
   push:
+    paths-ignore:
+      - '.github/**'
   pull_request:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       build_matrix_path:
         description: "Path to the build matrix file"
@@ -37,13 +37,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install yaml2json
+      - name: Install remarshal
         run: python3 -m pip install remarshal
 
       - name: Fetch Build Matrix
         run: |
           echo "build_matrix=$(yaml2json ${{ inputs.build_matrix_path }} | jq -c .)" >> $GITHUB_ENV
           yaml2json ${{ inputs.build_matrix_path }} | jq
+
   build:
     runs-on: ubuntu-latest
     container:
@@ -121,12 +122,12 @@ jobs:
           name: ${{ inputs.archive_name }}
           path: build/artifacts
 
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Release artifacts
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        with:
-          files: firmware.zip
+#  release:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Release artifacts
+#        uses: softprops/action-gh-release@v1
+#        if: startsWith(github.ref, 'refs/tags/')
+#        with:
+#          files: firmware.zip
