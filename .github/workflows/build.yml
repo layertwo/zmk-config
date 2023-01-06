@@ -95,8 +95,7 @@ jobs:
       - name: Archive (${{ env.display_name }})
         uses: actions/upload-artifact@v3
         with:
-          name: firmware
-          path: build/artifacts
+          path: build/artifacts/*
 
 #  release:
 #    needs: build
