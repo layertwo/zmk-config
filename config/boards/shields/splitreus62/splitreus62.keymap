@@ -9,6 +9,13 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+
+    behaviors {
+        gresc: grave_escape {
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
