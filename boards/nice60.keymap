@@ -32,6 +32,12 @@
         };
     };
 
+    behaviors {
+        gresc: grave_escape {
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+    };
+
     td0: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_0";
