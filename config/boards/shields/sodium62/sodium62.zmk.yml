@@ -1,0 +1,11 @@
+file_format: "1"
+id: sodium62
+name: sodium62
+type: shield
+url: https://nacly.net
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - sodium62_left
+  - sodium62_right
