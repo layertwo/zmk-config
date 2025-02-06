@@ -1,0 +1,8 @@
+# Copyright (c) 2022 Derek Schmell
+# SPDX-License-Identifier: MIT
+
+config SHIELD_SODIUM62_LEFT
+	def_bool $(shields_list_contains,sodium62_left)
+
+config SHIELD_SODIUM62_RIGHT
+	def_bool $(shields_list_contains,sodium62_right)

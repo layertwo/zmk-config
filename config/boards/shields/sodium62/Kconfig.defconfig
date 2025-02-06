@@ -1,0 +1,21 @@
+
+# Copyright (c) 2022 Derek Schmell
+# SPDX-License-Identifier: MIT
+ 
+ 
+if SHIELD_SODIUM62_LEFT
+
+config ZMK_KEYBOARD_NAME
+	default "sodium62"
+
+config ZMK_SPLIT_BLE_ROLE_CENTRAL
+	default y
+
+endif
+
+if SHIELD_SODIUM62_LEFT || SHIELD_SODIUM62_RIGHT
+
+config ZMK_SPLIT
+	default y
+	
+endif

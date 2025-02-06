@@ -22,3 +22,8 @@ include:
     shield: sanic62_left
   - board: nice_nano
     shield: sanic62_right
+
+  - board: nice_nano
+    shield: sodium62_left
+  - board: nice_nano
+    shield: sodium62_right
