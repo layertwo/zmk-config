@@ -48,3 +48,6 @@ CONFIG_ZMK_SLEEP=y
 
 #Uncomment to reset bluetooth settings. Need to rebuild and reflash afterwards with this setting off. 
 #CONFIG_ZMK_SETTINGS_RESET_ON_START=y
+
+CONFIG_ZMK_KSCAN_DEBOUNCE_PRESS_MS=8
+CONFIG_ZMK_KSCAN_DEBOUNCE_RELEASE_MS=8
