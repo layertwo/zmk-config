@@ -57,13 +57,14 @@ RC(4,0) RC(5,0) RC(2,1)                 RC(7,2)                         RC(0,5) 
         label = "RIGHT_ENCODER";
         a-gpios = <&gpio1 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <1>;
+        steps = <1>;
         status = "okay";
     };
 
     sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&right_encoder>;
+        triggers-per-rotation = <16>;
     };
 };
 
