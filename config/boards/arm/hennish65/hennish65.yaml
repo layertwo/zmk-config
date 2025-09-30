@@ -1,0 +1,14 @@
+identifier: hennish65
+name: hennish65
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+  - xtools
+supported:
+  - adc
+  - usb_device
+  - ble
+  - ieee802154
+  - watchdog
