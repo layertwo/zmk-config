@@ -1,12 +1,33 @@
-on: [push, pull_request, workflow_dispatch]
+name: zmk-build-and-release
+
+on:
+  push:
+    paths:
+      - 'config/**'
+      - '.github/workflows/build.yml'
+      - 'build.yaml'
+    branches: [ "mainline" ]
+  pull_request:
+    paths:
+      - 'config/**'
+      - '.github/workflows/build.yml'
+      - 'build.yaml'
+    branches: [ "mainline" ]
+  workflow_dispatch:
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    permissions:
+      contents: read
+
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
 
   release:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
     steps:
       - name: Release artifacts
         uses: softprops/action-gh-release@v2
