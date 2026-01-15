@@ -59,11 +59,40 @@ west build -b nice_nano -- -DSHIELD=sanic62_left
 - Board configs: `config/boards/arm/<board>/`
 - Shield configs: `config/boards/shields/<shield>/`
 
+## Development Workflow
+
+### Making Changes
+1. Modify keymap files (`.keymap`) for layout changes
+2. Edit device tree files (`.dts`, `.dtsi`, `.overlay`) for hardware changes
+3. Update Kconfig files (`.conf`, `Kconfig.*`) for feature configuration
+4. Commit changes to trigger automated builds via GitHub Actions
+
+### Testing Changes
+- GitHub Actions builds all configurations defined in `build.yaml`
+- Artifacts are available in the Actions tab after successful builds
+- Flash `.uf2` files to keyboard bootloader for testing
+
+### Common Modifications
+
+#### Adding a New Layer
+Edit the `.keymap` file and add a new layer definition within the `keymap` node.
+
+#### Changing Key Bindings
+Modify bindings in the `.keymap` file using ZMK behavior syntax (e.g., `&kp`, `&mo`, `&lt`).
+
+#### Enabling Features
+Add Kconfig options to `.conf` files (e.g., `CONFIG_ZMK_RGB_UNDERGLOW=y`).
+
+#### Hardware Changes
+Modify device tree files to change pin assignments, matrix definitions, or add hardware features.
+
 ## Project Structure
 
 ### Root Level
 - `build.yaml`: GitHub Actions build matrix defining board/shield combinations
-- `config/`: Main configuration directory containing all keyboard definitions
+- `config/`: West workspace configuration
+- `boards/`: All keyboard hardware and keymap definitions
+- `.github/workflows/`: CI/CD pipeline configuration
 
 ### Board Definitions (`config/boards/arm/`)
 Complete keyboard implementations with integrated controllers.
@@ -127,3 +156,43 @@ Split keyboards require separate configurations for left and right halves:
 - Shared definitions in `<name>.dtsi` and `<name>.keymap`
 
 Both halves are built separately and defined in `build.yaml` matrix.
+
+## Key Concepts for AI Agents
+
+### Device Tree Hierarchy
+- Board `.dts` files define complete hardware (integrated boards)
+- Shield `.overlay` files add hardware definitions to base controller boards
+- `.dtsi` files contain shared/reusable definitions included by other files
+- Device tree uses a hierarchical node structure with properties and labels
+
+### Keymap Syntax
+- Keymaps use C preprocessor syntax with ZMK-specific macros
+- Bindings reference behaviors: `&kp KEY` (key press), `&mo LAYER` (momentary layer)
+- Layers are defined in order, with layer 0 as the default
+- Macros and custom behaviors can be defined in the keymap
+
+### Configuration Precedence
+1. Board/shield specific `.conf` files
+2. `Kconfig.defconfig` files (defaults)
+3. `Kconfig` menu selections
+4. Built-in ZMK defaults
+
+### Build Matrix
+The `build.yaml` file defines what gets built:
+- `board`: Array of integrated boards to build
+- `include`: Array of board+shield combinations for shields
+- Each entry generates a separate firmware artifact
+
+### Common Pitfalls
+- Device tree syntax is strict (semicolons, commas, angle brackets matter)
+- Kconfig options must be valid (check ZMK documentation)
+- Split keyboards need matching left/right configurations
+- Pin numbers are controller-specific (nice!nano uses different numbering than raw nRF52840)
+- Matrix row/col definitions must match physical wiring
+
+### Debugging Tips
+- Check GitHub Actions logs for build errors
+- Device tree errors often indicate syntax or reference issues
+- Kconfig errors suggest invalid or conflicting options
+- Missing bindings in keymaps cause compilation failures
+- Use ZMK Discord for community support on complex issues
