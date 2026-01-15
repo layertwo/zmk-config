@@ -3,14 +3,18 @@ name: zmk-build-and-release
 on:
   push:
     paths:
-      - 'config/**'
       - '.github/workflows/build.yml'
+      - 'boards/**'
+      - 'config/**'
+      - 'zephyr/**'
       - 'build.yaml'
     branches: [ "mainline" ]
   pull_request:
     paths:
-      - 'config/**'
       - '.github/workflows/build.yml'
+      - 'boards/**'
+      - 'config/**'
+      - 'zephyr/**'
       - 'build.yaml'
     branches: [ "mainline" ]
   workflow_dispatch:
