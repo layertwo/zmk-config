@@ -4,9 +4,14 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: Na-Cly
+      url-base: https://github.com/Na-Cly
   projects:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
+    - name: zmk-keyboard-hennish65
+      remote: Na-Cly
+      revision: main
   self:
     path: config
